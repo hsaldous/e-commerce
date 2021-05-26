@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try{
     const productData = await Product.findAll({
       include: [ Category,
@@ -107,7 +107,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const deleteProduct = await Product.destroy({
       where: {
